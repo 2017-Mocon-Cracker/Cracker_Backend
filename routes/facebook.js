@@ -16,14 +16,12 @@ function facebook(app, passport, FacebookStrategy){
     passport.use(new FacebookStrategy({
         clientID : "132480600677095",
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
-        callbackURL: "/facebook/callback",
-        profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'verified'],
     }, function (accessToken, refreshToken, profile, done) {
         console.log(profile);
         done(null, profile);
     }));
 
-    app.get('/facebook/token', passport.authenticate('facebook'), function (req, res) {
+    app.get('/facebook/token', passport.authenticate('facebook-token'), function (req, res) {
         console.log("user token =========" + req.param('access_token'));
         if(req.user){
             var response = {
@@ -46,10 +44,10 @@ function facebook(app, passport, FacebookStrategy){
     })
 
     app.get('/facebook/callback',
-        passport.authenticate('facebook',
+        passport.authenticate('facebook-token',
             {
-                successRedirect: '/success',
-                failureRedirect: '/fail'
+                successRedirect: '/',
+                failureRedirect: '/'
             }));
 
 

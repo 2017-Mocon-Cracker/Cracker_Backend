@@ -3,7 +3,7 @@ var app = express()
 var port = process.env.PORT||8888
 var bodyParser = require('body-parser')
 var passport = require('passport')
-var FacebookStrategy = require('passport-facebook')
+var FacebookStrategy = require('passport-facebook-token')
 var session = require('express-session')
 var db = require('./mongo/database')
 
