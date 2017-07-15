@@ -14,13 +14,16 @@ var CardSchema = new schema({
     Money : {
         type: Number
     },
-    ID : {
+    CardNum : {
+        type : Number
+    },
+    Email : {
         type: String
     },
-    name : {
+    CardName : {
         type : String
     },
-    user : {
+    UserName : {
         type : String
     },
     isEmpty : {
