@@ -10,5 +10,54 @@ var db = mongoose.connect("mongodb://localhost/Cracker", (err)=>{
     }
 })
 
+var CardSchema = new schema({
+    Money : {
+        type: Number
+    },
+    ID : {
+        type: String
+    },
+    name : {
+        type : String
+    },
+    user : {
+        type : String
+    },
+    isEmpty : {
+        type : Number
+    },
+    Paied : {
+        type : Number
+    },
+    isTransfer : {
+        type : Number
+    }
+})
 
+var CheckPathSchema = new schema({
+    Station_ID : {
+        type : String
+    },
+    Beacon_ID : {
+        type : String
+    },
+    Time : {
+        type : String
+    },
+    Date : {
+        type : String
+    },
+    Bus_Num : {
+        type : String
+    }
+})
+
+
+
+var CardInfo = mongoose.model('Card', CardSchema)
+var CheckPath = mongoose.model('CheckPath', CheckPathSchema)
+
+
+exports.CardInfo = CardInfo
+exports.CheckPath = CheckPath
 exports.db = db;
