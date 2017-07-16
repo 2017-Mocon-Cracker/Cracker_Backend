@@ -17,7 +17,6 @@ function facebook(app, passport, FacebookStrategy, db, session){
         clientID : "132480600677095",
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
     }, (accessToken, refreshToken, profile, done)=>{
-        console.log(profile);
         var card = new db.CardInfo({
             Money : 1000,
             CardNum : null,
@@ -58,10 +57,8 @@ function facebook(app, passport, FacebookStrategy, db, session){
 
     app.get('/facebook/token', passport.authenticate('facebook-token'), (req, res)=>{
         console.log("USER_TOKEN ==== " + req.param('access_token'));
-        console.log(req.user)
-        console.log(req.user.emails[0].value)
         req.session.email = req.user.emails[0].value
-        console.log(req.user.name.familyName+req.user.name.givenName)
+        console.log('SESSION ==== '+req.session.email)
         if(req.user){
             db.CardInfo.findOne({
                 Email : req.user.emails[0].value,
