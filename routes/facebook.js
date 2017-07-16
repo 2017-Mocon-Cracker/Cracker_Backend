@@ -24,11 +24,13 @@ function facebook(app, passport, FacebookStrategy, db, session){
             Email : profile.emails[0].value,
             CardName : "",
             UserName : profile.name.familyName+profile.name.givenName,
+            CardIn : 0,
             isEmpty : 0,
             Paied : 0,
             isTransfer : 0
         })
-        console.log('CARD ==== '+card)
+        console.log('======== CARD ========')
+        console.log(card)
         db.CardInfo.findOne({
             Email : profile.emails[0].value
         },(err, result)=>{
@@ -55,7 +57,7 @@ function facebook(app, passport, FacebookStrategy, db, session){
     }));
 
     app.get('/facebook/token', passport.authenticate('facebook-token'), (req, res)=>{
-        console.log("USER_TOKEN ========= " + req.param('access_token'));
+        console.log("USER_TOKEN ==== " + req.param('access_token'));
         console.log(req.user)
         console.log(req.user.emails[0].value)
         req.session.email = req.user.emails[0].value
