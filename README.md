@@ -1,16 +1,13 @@
-var mongoose = require('mongoose')
-var schema = mongoose.Schema;
-var db = mongoose.connect("mongodb://localhost/Cracker", (err)=>{
-    if(err){
-        console.log('DB Error!')
-        throw err
-    }
-    else{
-        console.log('DB Connect Success!')
-    }
-})
+# Cracker_Backend
 
-var CardSchema = new schema({
+* 선린인터넷고등학교 교내 모바일 콘텐츠 경진대회 "Cracker" API DOCS
+
+* 모든 요청 : POST , x-www-form-urlencoded 으로 처리
+
+##DataBase Schema
+
+> Card_Schema
+
     Money : {
         type: Number
     },
@@ -38,9 +35,9 @@ var CardSchema = new schema({
     isTransfer : {
         type : Boolean
     }
-})
 
-var CheckPathSchema = new schema({
+> Beacon_Schema
+
     Station_ID : {
         type : String
     },
@@ -56,14 +53,24 @@ var CheckPathSchema = new schema({
     Bus_Num : {
         type : String
     }
-})
 
 
+## API Document
 
-var CardInfo = mongoose.model('Card', CardSchema)
-var CheckPath = mongoose.model('CheckPath', CheckPathSchema)
+### Facebook Token Login
 
+> /facebook/token : 페이스북 토큰 로그인
+>> Requiring Params
 
-exports.CardInfo = CardInfo
-exports.CheckPath = CheckPath
-exports.db = db;
+    access_token : Facebook Token
+
+>> Return Values
+
+    >>> Success
+
+        return User Schema
+
+    >>> Fail
+
+        return success:false
+       
