@@ -4,7 +4,7 @@
 
 * 모든 요청 : POST , x-www-form-urlencoded 으로 처리
 
-##DataBase Schema
+## DataBase Schema
 
 > Card_Schema
 
