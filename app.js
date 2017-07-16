@@ -24,4 +24,4 @@ app.listen(port,()=>{
 })
 
 require('./routes/auth')(app)
-require('./routes/facebook')(app, passport, FacebookStrategy, db)
+require('./routes/facebook')(app, passport, FacebookStrategy, db, session)

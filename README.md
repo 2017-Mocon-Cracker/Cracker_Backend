@@ -68,9 +68,29 @@
 
     >>> Success
 
-        return User Schema
+        return HTTP 200, User Schema
 
     >>> Fail
 
-        return success:false
+        return HTTP 403
        
+       
+### Card
+
+> /card/add : 카드 등록
+>> Requiring Params
+
+    CardName : String
+    CardNum : Number
+
+>> Return Values
+
+    >>> Success
+        
+        return HTTP 200
+        
+    >>> Fail
+    
+        return HTTP 403
+    
+

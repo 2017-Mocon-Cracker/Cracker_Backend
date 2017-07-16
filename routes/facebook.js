@@ -1,6 +1,6 @@
 module.exports = facebook;
 
-function facebook(app, passport, FacebookStrategy){
+function facebook(app, passport, FacebookStrategy, session, db){
 
     app.use(passport.initialize());
     app.use(passport.session());
@@ -57,6 +57,7 @@ function facebook(app, passport, FacebookStrategy){
         console.log("user token ========= " + req.param('access_token'));
         console.log(req.user)
         console.log(req.user.emails[0].value)
+        req.session.email = req.user.emails[0].value
         console.log(req.user.name.familyName+req.user.name.givenName)
         if(req.user){
             db.CardInfo.findOne({
