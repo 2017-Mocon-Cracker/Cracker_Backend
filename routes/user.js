@@ -13,13 +13,16 @@ function user(app, session, db){
                 throw err
             }
             else {
+                console.log('update Success')
                 res.status(200).send('Data Update Success')
             }
         })
         db.CardInfo.findOne({
             Email : body.Email
         }, (err, result)=>{
-            console.log(result)
+            if(result){
+                console.log(result)
+            }
         })
 
     })
