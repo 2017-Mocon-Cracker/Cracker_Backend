@@ -2,7 +2,7 @@ module.exports = user
 
 function user(app, db, session){
     app.post('/card/add', (req, res)=>{
-        var body = req.body;
+        var body = req.param('param')
         db.CardInfo.update({
             Email : req.session.email
         },{$set:{CardName:body.CardName, CardIn:true, CardNum:body.CardNum}}, (err)=>{
