@@ -61,6 +61,8 @@ function facebook(app, passport, FacebookStrategy, db, session){
             db.CardInfo.findOne({
                 Email : req.user.emails[0].value,
             },(err, result)=>{
+                console.log('RESULT ==== ')
+                console.log(result)
                 if(err){
                     console.log('/facebook/token Error')
                     throw err
