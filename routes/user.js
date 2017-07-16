@@ -2,7 +2,7 @@ module.exports = user
 
 function user(app, session, db){
     app.post('/card/add', (req, res)=>{
-        var body = req.param('param')
+        var body = JSON.parse(req.param('param'))
         console.log(body)
         console.log('EMAIL : '+body.Email)
         console.log('CardName : '+body.CardName)
