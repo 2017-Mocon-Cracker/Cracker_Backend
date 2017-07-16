@@ -60,9 +60,8 @@ var CheckPathSchema = new schema({
 
 
 
-var CardInfo = mongoose.model('Card', CardSchema)
-var CheckPath = mongoose.model('CheckPath', CheckPathSchema)
-
+CardInfo = mongoose.model('Card', CardSchema)
+CheckPath = mongoose.model('CheckPath', CheckPathSchema)
 
 exports.CardInfo = CardInfo
 exports.CheckPath = CheckPath
