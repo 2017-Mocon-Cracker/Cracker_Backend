@@ -18,7 +18,7 @@ function facebook(app, passport, FacebookStrategy, session, db){
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
     }, (accessToken, refreshToken, profile, done)=>{
         console.log(profile);
-        var card = new db.CardInfo({
+        var card = db.CardInfo({
             Money : 1000,
             CardNum : null,
             Email : profile.emails[0].value,

@@ -10,7 +10,7 @@ var db = mongoose.connect("mongodb://localhost/Cracker", (err)=>{
     }
 })
 
-var CardSchema = new schema({
+var CardSchema = schema({
     Money : {
         type: Number
     },
@@ -40,7 +40,7 @@ var CardSchema = new schema({
     }
 })
 
-var CheckPathSchema = new schema({
+var CheckPathSchema = schema({
     Station_ID : {
         type : String
     },
