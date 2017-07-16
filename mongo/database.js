@@ -1,5 +1,4 @@
 var mongoose = require('mongoose')
-var schema = mongoose.Schema;
 var db = mongoose.connect("mongodb://localhost/Cracker", (err)=>{
     if(err){
         console.log('DB Error!')
@@ -10,7 +9,7 @@ var db = mongoose.connect("mongodb://localhost/Cracker", (err)=>{
     }
 })
 
-var CardSchema = schema({
+var CardSchema = mongoose.Schema({
     Money : {
         type: Number
     },
@@ -40,7 +39,7 @@ var CardSchema = schema({
     }
 })
 
-var CheckPathSchema = schema({
+var CheckPathSchema = mongoose.Schema({
     Station_ID : {
         type : String
     },
