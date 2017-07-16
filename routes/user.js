@@ -5,7 +5,7 @@ function user(app, session, db){
         var body = req.param('param')
         console.log(body)
         db.CardInfo.update({
-            Email : req.session.email
+            Email : body.Email
         },{$set:{CardName:body.CardName, CardIn:true, CardNum:body.CardNum}}, (err)=>{
             if(err){
                 console.log('/card/register cardupdate Error')

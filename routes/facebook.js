@@ -57,8 +57,6 @@ function facebook(app, passport, FacebookStrategy, db, session){
 
     app.get('/facebook/token', passport.authenticate('facebook-token'), (req, res)=>{
         console.log("USER_TOKEN ==== " + req.param('access_token'));
-        req.session.email = req.user.emails[0].value
-        console.log('SESSION ==== '+req.session.email)
         if(req.user){
             db.CardInfo.findOne({
                 Email : req.user.emails[0].value,
