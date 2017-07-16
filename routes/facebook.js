@@ -5,22 +5,22 @@ function facebook(app, passport, FacebookStrategy){
     app.use(passport.initialize());
     app.use(passport.session());
 
-    passport.serializeUser(function(user, done){
+    passport.serializeUser((user, done)=>{
         done(null, user);
     });
 
-    passport.deserializeUser(function (obj, done) {
+    passport.deserializeUser((obj, done)=>{
         done(null, obj);
     });
 
     passport.use(new FacebookStrategy({
         clientID : "132480600677095",
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
-    }, function (accessToken, refreshToken, profile, done) {
+    }, (accessToken, refreshToken, profile, done)=>{
         console.log(profile);
         var card = new db.CardInfo({
             Money : 1000,
-            CardNum : NULL,
+            CardNum : null,
             Email : profile.emails[0].value,
             CardName : "",
             UserName : profile.name.familyName+profile.name.givenName,
@@ -79,13 +79,6 @@ function facebook(app, passport, FacebookStrategy){
         }
     });
 
-    app.get('/success', (req, res)=>{
-        res.send('success')
-    })
-
-    app.get('/fail', (req, res)=>{
-        res.send('fail')
-    })
 
     app.get('/facebook/callback',
         passport.authenticate('facebook-token',

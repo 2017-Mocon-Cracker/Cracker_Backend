@@ -15,7 +15,7 @@ var CardSchema = new schema({
         type: Number
     },
     CardNum : {
-        type : Number
+        type : String
     },
     Email : {
         type: String
