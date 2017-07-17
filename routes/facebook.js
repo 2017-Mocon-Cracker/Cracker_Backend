@@ -17,11 +17,13 @@ function facebook(app, passport, FacebookStrategy, db, session){
         clientID : "132480600677095",
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
     }, (accessToken, refreshToken, profile, done)=>{
+        console.log('======== PROFILE ========')
+        console.log(profile)
         console.log('==================== FACEBOOK ====================')
         var card = new db.CardInfo({
             Money : 1000,
             CardNum : null,
-            Email : profile.emails[0].value,
+            Facebook_ID : profile.id,
             CardName : "",
             UserName : profile.name.familyName+profile.name.givenName,
             CardIn : 0,
@@ -32,7 +34,7 @@ function facebook(app, passport, FacebookStrategy, db, session){
         console.log('======== CARD ========')
         console.log(card)
         db.CardInfo.findOne({
-            Email : profile.emails[0].value
+            Facebook_ID : profile.id
         },(err, result)=>{
             if(err){
                 console.log('facebook login Error')
@@ -60,7 +62,7 @@ function facebook(app, passport, FacebookStrategy, db, session){
         console.log("USER_TOKEN ==== " + req.param('access_token'));
         if(req.user){
             db.CardInfo.findOne({
-                Email : req.user.emails[0].value,
+                Facebook_ID : req.user.id,
             },(err, result)=>{
                 console.log('======== RESULT ========')
                 console.log(result)

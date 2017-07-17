@@ -7,7 +7,7 @@ function user(app, session, db){
         console.log('======== CARD_BODY ========')
         console.log(body)
         db.CardInfo.update({
-            Email : body.Email
+            Facebook_ID : body.Facebook_ID
         },{$set:{CardName:body.CardName, CardIn:true, CardNum:body.CardNum}}, (err)=>{
             if(err){
                 console.log('/card/register cardupdate Error')
@@ -16,7 +16,7 @@ function user(app, session, db){
             }
             else {
                 db.CardInfo.findOne({
-                    Email : body.Email
+                    Facebook_ID : body.Facebook_ID
                 }, (err, result)=>{
                     if(err){
                         console.log('err')

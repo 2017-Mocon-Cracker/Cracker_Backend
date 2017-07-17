@@ -16,7 +16,7 @@ var CardSchema = mongoose.Schema({
     CardNum : {
         type : String
     },
-    Email : {
+    Facebook_ID : {
         type: String
     },
     CardName : {
