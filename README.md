@@ -82,6 +82,7 @@
 
     CardName : String
     CardNum : Number
+    Facebook_ID : String
 
 >> Return Values
 
