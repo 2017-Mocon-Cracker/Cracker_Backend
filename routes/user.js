@@ -3,10 +3,9 @@ module.exports = user
 function user(app, session, db){
     app.post('/card/add', (req, res)=>{
         var body = JSON.parse(req.param('param'))
+        console.log('==================== CARD_ADD ====================')
+        console.log('======== CARD_BODY ========')
         console.log(body)
-        console.log('EMAIL : '+body.Email)
-        console.log('CardName : '+body.CardName)
-        console.log('CardNum : '+body.CardNum)
         db.CardInfo.update({
             Email : body.Email
         },{$set:{CardName:body.CardName, CardIn:true, CardNum:body.CardNum}}, (err)=>{
@@ -24,7 +23,9 @@ function user(app, session, db){
                         throw err
                     }
                     else if(result){
+                        console.log('======== CARD_DB ========')
                         console.log(result)
+                        console.log('=================== END ====================')
                         res.status(200).send(result)
                     }
                 })

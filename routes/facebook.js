@@ -17,6 +17,7 @@ function facebook(app, passport, FacebookStrategy, db, session){
         clientID : "132480600677095",
         clientSecret : "7e7b430487b7580a7941aea2a7e972b4",
     }, (accessToken, refreshToken, profile, done)=>{
+        console.log('==================== FACEBOOK ====================')
         var card = new db.CardInfo({
             Money : 1000,
             CardNum : null,
@@ -63,6 +64,7 @@ function facebook(app, passport, FacebookStrategy, db, session){
             },(err, result)=>{
                 console.log('======== RESULT ========')
                 console.log(result)
+                console.log('====================== END ======================')
                 if(err){
                     console.log('/facebook/token Error')
                     throw err
